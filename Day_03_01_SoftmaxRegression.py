@@ -146,6 +146,7 @@ def softmax_regression_iris_sparse():
     p_arg = np.argmax(p, axis=1)
     print('acc :', np.mean(p_arg == y_test))
 
+
 # softmax_regression()
 # softmax_regression_iris()
 # softmax_regression_iris_dense()
