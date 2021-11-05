@@ -9,7 +9,7 @@ from sklearn import preprocessing, model_selection
 # https://archive.ics.uci.edu/ml/index.php
 
 # 1단계: 파일 읽기
-abalone = pd.read_csv('data/abalone.data', header=None)
+abalone = pd.read_csv('../data/abalone.data', header=None)
 # print(data)
 
 # 2단계: x, y 데이터 분리

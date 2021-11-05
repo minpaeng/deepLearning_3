@@ -64,7 +64,7 @@ def softmax_regression():
 # iris_onehot.csv 파일을 읽어서
 # 70%로 학습하고 30%에 대해 정확도를 구하세요
 def softmax_regression_iris():
-    iris = pd.read_csv('data/iris_onehot.csv', index_col=0)
+    iris = pd.read_csv('../data/iris_onehot.csv', index_col=0)
 
     values = iris.values
     np.random.shuffle(values)   # shuffle: 데이터 튜플 순서 섞을때 사용
@@ -89,7 +89,7 @@ def softmax_regression_iris():
 
 
 def softmax_regression_iris_dense():
-    iris = pd.read_csv('data/iris.csv', index_col=0)
+    iris = pd.read_csv('../data/iris.csv', index_col=0)
 
     x = iris.values[:, :-1]
     y = iris.values[:, -1:]
@@ -115,7 +115,7 @@ def softmax_regression_iris_dense():
 
 
 def softmax_regression_iris_sparse():
-    iris = pd.read_csv('data/iris.csv', index_col=0)
+    iris = pd.read_csv('../data/iris.csv', index_col=0)
 
     x = iris.values[:, :-1]
     y = iris.values[:, -1:]

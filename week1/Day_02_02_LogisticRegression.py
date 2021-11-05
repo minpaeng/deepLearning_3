@@ -50,7 +50,7 @@ def logistic_regression():
 # 피마 인디언 당뇨병 데이터를 가져와서
 # 70%로 학습하고 30%에 대해 정확도를 구하세요 (목표 75%)
 def logistic_regression_pima():
-    pima = pd.read_csv('data/pima-indians-diabetes.csv',
+    pima = pd.read_csv('../data/pima-indians-diabetes.csv',
                        skiprows=9, header=None)
     # print(pima)
 

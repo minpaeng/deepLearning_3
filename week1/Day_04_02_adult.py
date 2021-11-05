@@ -125,8 +125,8 @@ def get_data_binarizer(file_path):
 # print(x_train.shape, y_train.shape)   # (32561, 14) (32561,)
 # print(x_test.shape, y_test.shape)     # (16281, 14) (16281,)
 
-x_train, y_train = get_data_binarizer('data/adult.data')
-x_test, y_test = get_data_binarizer('data/adult.test')
+x_train, y_train = get_data_binarizer('../data/adult.data')
+x_test, y_test = get_data_binarizer('../data/adult.test')
 # print(x_train.shape, y_train.shape)     # (32561, 65) (32561, 1)
 # print(x_test.shape, y_test.shape)       # (16281, 65) (16281, 1)
 

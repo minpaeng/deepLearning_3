@@ -35,7 +35,7 @@ def linear_regression():
 
 # 구축한 모델을 시각화하세요
 def linear_regression_cars():
-    cars = pd.read_csv('data/cars.csv', index_col=0)
+    cars = pd.read_csv('../data/cars.csv', index_col=0)
     # print(cars.values)
 
     x = cars.values[:, 0]
