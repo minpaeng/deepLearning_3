@@ -2,7 +2,7 @@
 import tensorflow.keras as keras
 import numpy as np
 import pandas as pd
-from sklearn import preprocessing, model_selection
+from sklearn import preprocessing
 
 
 # 퀴즈
