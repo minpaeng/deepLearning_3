@@ -13,7 +13,7 @@ def make_data(seq_length):
     nietzsche = nietzsche.lower()
     f.close()
     # print(len(nietzsche))            # 600893
-    nietzsche = nietzsche[:10000]
+    nietzsche = nietzsche[:100000]
 
     # 2. 숫자로 변환
     bin = preprocessing.LabelBinarizer()
@@ -82,6 +82,49 @@ def predict_by_argmax(model, tokens, vocab):
         tokens[-1] = p
 
 
+def weighted_pick(p):
+    t = np.cumsum(p)
+
+    n = np.random.rand(1)[0]
+    return np.searchsorted(t, n)
+
+
+# 퀴즈
+# 가중치 합계를 이용해서 예측 결과를 디코딩하세요
+def predict_by_weighted(model, tokens, vocab):
+    for i in range(100):
+        p = model.predict(tokens[np.newaxis])
+        p = p[0]
+        p_arg = weighted_pick(p)
+        print(vocab[p_arg], end='')
+
+        # 1 + 59 + 1 글자 -> 가장 오래된 숫자 하나를 삭제하고 예측한 값을 뒤에 추가
+        tokens[:-1] = tokens[1:]
+        tokens[-1] = p
+    print()
+    print('-'*30)
+
+def temperature_pick(z, t):
+    z = np.log(z) / t
+    z = np.exp(z)                   # np.e ** z
+    s = np.sum(z)
+    return weighted_pick(z / s)
+
+
+# 퀴즈
+# 온도에 따라 다른 결과를 만들어 내는 함수를 구현하고, 예측 결과를 디코딩하세요
+def predict_by_temperature(model, tokens, vocab, temperature):
+    for i in range(100):
+        p = model.predict(tokens[np.newaxis])
+        p = p[0]
+        p_arg = temperature_pick(p, temperature)
+        print(vocab[p_arg], end='')
+
+        # 1 + 59 + 1 글자 -> 가장 오래된 숫자 하나를 삭제하고 예측한 값을 뒤에 추가
+        tokens[:-1] = tokens[1:]
+        tokens[-1] = p
+
+
 seq_length = 60
 x, y, vocab = make_data(seq_length)
 
@@ -96,4 +139,9 @@ pos = pos[0]
 tokens = x[pos]
 print(tokens.shape)                 # (60, 46)
 
-predict_by_argmax(model, tokens, vocab)
+# predict_by_argmax(model, tokens, vocab)
+predict_by_weighted(model, tokens, vocab)
+predict_by_temperature(model, tokens, vocab, 0.2)
+predict_by_temperature(model, tokens, vocab, 0.5)
+predict_by_temperature(model, tokens, vocab, 0.8)
+predict_by_temperature(model, tokens, vocab, 2.0)
