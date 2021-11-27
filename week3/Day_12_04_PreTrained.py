@@ -39,3 +39,5 @@ model.compile(optimizer=keras.optimizers.Adam(0.001),
 
 model.fit(flow_train, epochs=10, batch_size=16, verbose=2,
           validation_data=flow_test)
+
+# https://word2vec.kr/search/?query=%ED%95%9C%EA%B5%AD-%EC%84%9C%EC%9A%B8%2B%EB%8F%84%EC%BF%84 word2vec 관련 자료

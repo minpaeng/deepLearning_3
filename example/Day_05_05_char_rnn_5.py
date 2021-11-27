@@ -51,18 +51,24 @@ def char_rnn_5(words):
     # 패딩에 대해 예측한 결과를 버리세요
     # lengths = [len(w) for w in words]
 
-    for i, w in zip(vocab[p_arg], words):
-        # print(w, len(w))
-        valid = len(w) - 1
-        print(''.join(i[:valid]))
+    # for i, w in zip(vocab[p_arg], words):
+    #     # print(w, len(w))
+    #     valid = len(w) - 1
+    #     print(''.join(i[:valid]))
+    #
+    # for i in range(len(words)):
+    #     pred = p_arg[i]
+    #     w = words[i]
+    #     converted = vocab[pred]
+    #     w_len = len(w) - 1
+    #
+    #     print(converted[:w_len])
 
-    for i in range(len(words)):
-        pred = p_arg[i]
-        w = words[i]
-        converted = vocab[pred]
-        w_len = len(w) - 1
+    print(''.join(vocab[p_arg[0]]), end='')
 
-        print(converted[:w_len])
+    for i in range(1, len(p_arg)):
+        print(vocab[p_arg[i, -1]], end='')
 
 
-char_rnn_5(['yellow', 'sky', 'blood_game'])     # 패딩 : *
+if __name__ == '__main__':
+    char_rnn_5(['yellow', 'sky', 'blood_game'])     # 패딩 : *
